@@ -1,0 +1,31 @@
+mysql -ue33_15_18 -pmilkcoffee
+
+CREATE DATABASE e33_15_18;
+USE e33_15_18;
+
+GRANT ALL ON on e33_15_18.* TO e33_15_18;
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+user_id  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+login_id CHAR(31),
+pwd      CHAR(127),
+name     CHAR(50),
+introduction VARCHAR(100) DEFAULT ''
+);
+
+DROP TABLE IF EXISTS posts;
+CREATE TABLE posts (
+id       INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+user_id  INT UNSIGNED,
+message  VARCHAR(500),
+time     DATETIME DEFAULT NULL
+);
+
+DROP TABLE IF EXISTS friends;
+CREATE TABLE friends (
+id             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+user_id        INT UNSIGNED,
+friend_user_id INT UNSIGNED,
+status         INT
+);
